@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { fontFamily } from 'tailwindcss/defaultTheme';
 import plugin from 'tailwindcss/plugin';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config = {
   darkMode: ['class'],
@@ -17,7 +18,7 @@ const config = {
     'bg-secondary',
     'bg-card',
     'bg-accent',
-    'bg-descturctive',
+    'bg-destructive',
     'bg-muted',
     'lg:grid-cols-2',
     'lg:grid-cols-3',
@@ -25,8 +26,19 @@ const config = {
   ],
   prefix: '',
   theme: {
-    corePlugins: {
-      container: 'false',
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        xl: '4rem',
+      },
+      screens: {
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+      },
     },
     extend: {
       fontFamily: {
@@ -67,6 +79,13 @@ const config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        chart: {
+          '1': 'hsl(var(--chart-1))',
+          '2': 'hsl(var(--chart-2))',
+          '3': 'hsl(var(--chart-3))',
+          '4': 'hsl(var(--chart-4))',
+          '5': 'hsl(var(--chart-5))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -98,32 +117,7 @@ const config = {
     },
   },
   plugins: [
-    plugin(function ({ addBase, addComponents }) {
-      addComponents({
-        '.container': {
-          width: '100%',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
-          '@screen sm': {
-            maxWidth: '640px',
-            paddingLeft: '2rem',
-            paddingRight: '2rem',
-          },
-          '@screen md': {
-            maxWidth: '768px',
-          },
-          '@screen lg': {
-            maxWidth: '1024px',
-          },
-          '@screen xl': {
-            maxWidth: '1280px',
-            paddingLeft: '4rem',
-            paddingRight: '4rem',
-          },
-        },
-      });
+    plugin(function ({ addBase }) {
       addBase({
         h1: {
           fontFamily: 'var(--font-sans)',
@@ -177,6 +171,7 @@ const config = {
         },
       });
     }),
+    tailwindcssAnimate,
   ],
 } satisfies Config;
 

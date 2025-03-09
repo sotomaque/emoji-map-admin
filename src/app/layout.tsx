@@ -1,16 +1,15 @@
 import type { Metadata } from 'next';
-import { ClerkProvider, SignedIn, UserButton } from '@clerk/nextjs';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { ClerkProvider } from '@clerk/nextjs';
+import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { Header } from '@/components/header/header';
+import { cn } from '@/lib/utils';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const fontSans = FontSans({
   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
 });
 
 export const metadata: Metadata = {
@@ -24,22 +23,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <ClerkProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    <html lang='en' suppressHydrationWarning>
+      <link rel='icon' href='/favicon.ico' />
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased overscroll-none flex flex-col',
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
         >
-          <header className='flex justify-between items-center p-4 gap-4 h-16 border-b'>
-            <h1 className='text-xl font-bold'>EmojiMap Admin</h1>
-            <div className='flex items-center gap-4'>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </div>
-          </header>
-          <main>{children}</main>
-        </body>
-      </ClerkProvider>
+          <ClerkProvider>
+            <Header />
+            <main>{children}</main>
+          </ClerkProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
