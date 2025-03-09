@@ -5,14 +5,14 @@ import { Header } from '../header';
 
 // Mock the ModeToggle component
 vi.mock('../mode-toggle', () => ({
-  ModeToggle: () => <div data-testid="mode-toggle">Mode Toggle</div>,
+  ModeToggle: () => <div data-testid='mode-toggle'>Mode Toggle</div>,
 }));
 
 // Mock the Logo component
 vi.mock('../logo', () => ({
   Logo: () => (
-    <div className="flex items-center">
-      <span className="text-white font-bold text-xl">Emoji Map</span>
+    <div className='flex items-center'>
+      <span className='text-white font-bold text-xl'>Emoji Map</span>
     </div>
   ),
 }));
@@ -20,9 +20,9 @@ vi.mock('../logo', () => ({
 // Mock the Clerk components
 vi.mock('@clerk/nextjs', () => ({
   SignedIn: ({ children }: React.PropsWithChildren<unknown>) => (
-    <div data-testid="signed-in">{children}</div>
+    <div data-testid='signed-in'>{children}</div>
   ),
-  UserButton: () => <div data-testid="user-button">User Button</div>,
+  UserButton: () => <div data-testid='user-button'>User Button</div>,
 }));
 
 // Mock next-themes
@@ -34,7 +34,10 @@ vi.mock('next-themes', () => ({
 
 // Mock next/link
 vi.mock('next/link', () => ({
-  default: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
+  default: ({
+    children,
+    ...props
+  }: React.PropsWithChildren<Record<string, unknown>>) => (
     <a {...props}>{children}</a>
   ),
 }));
@@ -69,4 +72,4 @@ describe('Header', () => {
     expect(header).toHaveClass('border-b');
     expect(header).toHaveClass('sticky');
   });
-}); 
+});

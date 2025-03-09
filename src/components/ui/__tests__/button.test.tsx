@@ -7,8 +7,11 @@ import Link from 'next/link';
 
 // Mock the Slot component
 vi.mock('@radix-ui/react-slot', () => ({
-  Slot: ({ children, ...props }: React.PropsWithChildren<Record<string, unknown>>) => (
-    <div data-testid="slot" {...props}>
+  Slot: ({
+    children,
+    ...props
+  }: React.PropsWithChildren<Record<string, unknown>>) => (
+    <div data-testid='slot' {...props}>
       {children}
     </div>
   ),
@@ -31,7 +34,7 @@ describe('Button', () => {
   });
 
   it('should apply different variant classes', () => {
-    render(<Button variant="destructive">Destructive Button</Button>);
+    render(<Button variant='destructive'>Destructive Button</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('bg-destructive');
@@ -39,7 +42,7 @@ describe('Button', () => {
   });
 
   it('should apply different size classes', () => {
-    render(<Button size="sm">Small Button</Button>);
+    render(<Button size='sm'>Small Button</Button>);
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('h-8');
@@ -50,7 +53,7 @@ describe('Button', () => {
   it('should render as a child component when asChild is true', () => {
     render(
       <Button asChild>
-        <Link href="/test">Link Button</Link>
+        <Link href='/test'>Link Button</Link>
       </Button>
     );
 
@@ -77,4 +80,4 @@ describe('Button', () => {
     expect(button).toBeDisabled();
     expect(button).toHaveClass('disabled:opacity-50');
   });
-}); 
+});

@@ -10,7 +10,9 @@ export function Logo() {
         height={56}
         className='mr-3 relative'
       />
-      <span className='font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500'>Emoji Map</span>
+      <span className='font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-500'>
+        Emoji Map
+      </span>
     </div>
   );
 }

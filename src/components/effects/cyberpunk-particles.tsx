@@ -111,8 +111,8 @@ export function CyberpunkParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 pointer-events-none overflow-hidden"
+      className='absolute inset-0 z-0 pointer-events-none overflow-hidden'
       style={{ opacity: theme === 'dark' ? 0.3 : 0.15 }}
     />
   );
-} 
+}
