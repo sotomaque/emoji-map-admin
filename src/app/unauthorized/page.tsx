@@ -66,29 +66,32 @@ export default function UnauthorizedPage() {
           </h1>
         </div>
 
-        <div className='mb-8'>
-          <h2 className='text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100'>
-            Access Requirements
-          </h2>
-          <p className='mb-4 text-gray-700 dark:text-gray-200'>
-            The EmojiMap Admin Dashboard is restricted to administrators only.
-            To access this application, you need:
-          </p>
-          <ul className='list-disc text-left pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-200'>
-            <li>To be a member of the EmojiMap organization</li>
-            <li>
-              To have the{' '}
-              <code className='bg-gray-100 dark:bg-muted/80 px-1 py-0.5 rounded text-sm'>
-                org:admin
-              </code>{' '}
-              role in the organization
-            </li>
-          </ul>
-          <p className='text-sm text-gray-500 dark:text-muted-foreground italic'>
-            If you believe you&apos;ve been redirected here inadvertently or
-            should have admin access, please contact an EmojiMap administrator.
-          </p>
-        </div>
+        <SignedIn>
+          <div className='mb-8'>
+            <h2 className='text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100'>
+              Access Requirements
+            </h2>
+            <p className='mb-4 text-gray-700 dark:text-gray-200'>
+              The EmojiMap Admin Dashboard is restricted to administrators only.
+              To access this application, you need:
+            </p>
+            <ul className='list-disc text-left pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-200'>
+              <li>To be a member of the EmojiMap organization</li>
+              <li>
+                To have the{' '}
+                <code className='bg-gray-100 dark:bg-muted/80 px-1 py-0.5 rounded text-sm'>
+                  org:admin
+                </code>{' '}
+                role in the organization
+              </li>
+            </ul>
+            <p className='text-sm text-gray-500 dark:text-muted-foreground italic'>
+              If you believe you&apos;ve been redirected here inadvertently or
+              should have admin access, please contact an EmojiMap
+              administrator.
+            </p>
+          </div>
+        </SignedIn>
 
         <div className='flex justify-center gap-4'>
           <Link
