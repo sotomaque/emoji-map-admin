@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Header } from '@/components/header/header';
 import { cn } from '@/lib/utils';
+import { Footer } from '@/components/footer/footer';
+import { Providers } from '@/components/providers/providers';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -31,17 +31,11 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='system'
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ClerkProvider>
-            <Header />
-            <main className='flex-1 flex flex-col'>{children}</main>
-          </ClerkProvider>
-        </ThemeProvider>
+        <Providers>
+          <Header />
+          <main className='flex-1 flex flex-col'>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
