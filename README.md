@@ -1,7 +1,7 @@
 # EmojiMap Admin Dashboard
 
 <div align="center">
-  <img src="public/logo-blur.png" alt="Emoji Map Logo" width="180" height="180" style="border-radius: 12px; margin-bottom: 20px;" />
+  <img src="public/logo.png" alt="Emoji Map Logo" width="180" height="180" style="border-radius: 12px; margin-bottom: 20px;" />
   <h3>Find places on a map with emoji markers</h3>
   
   <div style="margin-top: 20px;">

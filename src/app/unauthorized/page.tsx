@@ -53,7 +53,7 @@ export default function UnauthorizedPage() {
         <div className='flex flex-col items-center mb-8'>
           <div className={`relative flex items-center justify-center mb-4`}>
             <Image
-              src='/logo-blur.png'
+              src='/logo.png'
               alt='EmojiMap Logo'
               width={140}
               height={140}
