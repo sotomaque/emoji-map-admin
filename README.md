@@ -1,4 +1,3 @@
-
 # EmojiMap Admin Dashboard
 
 <div align="center">
@@ -23,6 +22,8 @@ Admin dashboard for the EmojiMap application. This dashboard is restricted to ad
 - Organization-based access control
 - Admin-only dashboard
 - Type-safe environment variables with T3 Env
+- Cyberpunk-themed UI with responsive design for both light and dark modes
+- Interactive particle effects and animated backgrounds
 
 ## Getting Started
 
@@ -59,6 +60,23 @@ pnpm dev
 | `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Clerk publishable key |
 | `CLERK_SECRET_KEY` | Clerk secret key |
 | `CLERK_EMOJIMAP_ORG_ID` | ID of the EmojiMap organization in Clerk |
+
+## UI Components
+
+The application features a cyberpunk-themed UI with custom components:
+
+### Cyberpunk Elements
+
+- **CyberpunkParticles**: Interactive canvas-based particle system that creates a network of connected nodes
+- **Animated Backgrounds**: Gradient backgrounds with grid overlays and scanline effects
+- **Glowing Elements**: Buttons and UI components with glow effects that respond to user interaction
+- **Responsive Design**: All cyberpunk elements are optimized for both light and dark modes
+
+### Custom Components
+
+- **CyberpunkButton**: Gradient-filled buttons with hover effects and optional glow
+- **BlurLogo**: Special logo component for the unauthorized page with blur effects
+- **Animated Header**: Header with subtle animations and theme-aware styling
 
 ## Testing
 
