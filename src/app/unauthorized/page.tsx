@@ -11,7 +11,7 @@ export default function UnauthorizedPage() {
   const { theme } = useTheme();
 
   return (
-    <div className='w-full h-screen flex items-center justify-center p-4 relative overflow-hidden'>
+    <div className='flex-1 w-full flex items-center justify-center p-4 relative overflow-hidden'>
       {/* Cyberpunk background */}
       <div className='absolute inset-0 bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 dark:from-blue-900 dark:via-purple-900 dark:to-pink-800 z-0'>
         {/* Grid overlay */}
