@@ -15,18 +15,21 @@ interface Particle {
 export function CyberpunkParticles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
 
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas to full screen
+    // Set canvas to container size
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
     };
 
     resizeCanvas();
@@ -108,11 +111,19 @@ export function CyberpunkParticles() {
     };
   }, [theme]);
 
+  // Use a fixed opacity value for initial render to avoid hydration mismatch
+  const opacityValue = 0.3;
+
   return (
-    <canvas
-      ref={canvasRef}
-      className='absolute inset-0 z-0 pointer-events-none overflow-hidden'
-      style={{ opacity: theme === 'dark' ? 0.3 : 0.15 }}
-    />
+    <div
+      ref={containerRef}
+      className='absolute inset-0 z-0 pointer-events-none'
+    >
+      <canvas
+        ref={canvasRef}
+        className='w-full h-full'
+        style={{ opacity: opacityValue }}
+      />
+    </div>
   );
 }

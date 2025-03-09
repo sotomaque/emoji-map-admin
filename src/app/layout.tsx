@@ -27,7 +27,7 @@ export default function RootLayout({
       <link rel='icon' href='/favicon.ico' />
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased overscroll-none flex flex-col',
+          'min-h-screen bg-background font-sans antialiased flex flex-col',
           fontSans.variable
         )}
       >
@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <ClerkProvider>
             <Header />
-            <main>{children}</main>
+            <main className='flex-1 flex flex-col'>{children}</main>
           </ClerkProvider>
         </ThemeProvider>
       </body>
