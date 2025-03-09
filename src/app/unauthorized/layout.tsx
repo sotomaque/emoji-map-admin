@@ -10,5 +10,5 @@ export default async function UnauthorizedLayout({
     redirect('/admin');
   }
 
-  return <div className='min-h-screen bg-gray-50'>{children}</div>;
+  return <>{children}</>;
 }
