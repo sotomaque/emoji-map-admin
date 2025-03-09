@@ -1,6 +1,11 @@
 'use client';
 
-import { SignInButton } from '@clerk/nextjs';
+import {
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from '@clerk/nextjs';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { dark } from '@clerk/themes';
@@ -61,29 +66,32 @@ export default function UnauthorizedPage() {
           </h1>
         </div>
 
-        <div className='mb-8'>
-          <h2 className='text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100'>
-            Access Requirements
-          </h2>
-          <p className='mb-4 text-gray-700 dark:text-gray-200'>
-            The EmojiMap Admin Dashboard is restricted to administrators only.
-            To access this application, you need:
-          </p>
-          <ul className='list-disc text-left pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-200'>
-            <li>To be a member of the EmojiMap organization</li>
-            <li>
-              To have the{' '}
-              <code className='bg-gray-100 dark:bg-muted/80 px-1 py-0.5 rounded text-sm'>
-                org:admin
-              </code>{' '}
-              role in the organization
-            </li>
-          </ul>
-          <p className='text-sm text-gray-500 dark:text-muted-foreground italic'>
-            If you believe you&apos;ve been redirected here inadvertently or
-            should have admin access, please contact an EmojiMap administrator.
-          </p>
-        </div>
+        <SignedIn>
+          <div className='mb-8'>
+            <h2 className='text-xl font-semibold mb-4 text-gray-800 dark:text-gray-100'>
+              Access Requirements
+            </h2>
+            <p className='mb-4 text-gray-700 dark:text-gray-200'>
+              The EmojiMap Admin Dashboard is restricted to administrators only.
+              To access this application, you need:
+            </p>
+            <ul className='list-disc text-left pl-6 mb-4 space-y-2 text-gray-700 dark:text-gray-200'>
+              <li>To be a member of the EmojiMap organization</li>
+              <li>
+                To have the{' '}
+                <code className='bg-gray-100 dark:bg-muted/80 px-1 py-0.5 rounded text-sm'>
+                  org:admin
+                </code>{' '}
+                role in the organization
+              </li>
+            </ul>
+            <p className='text-sm text-gray-500 dark:text-muted-foreground italic'>
+              If you believe you&apos;ve been redirected here inadvertently or
+              should have admin access, please contact an EmojiMap
+              administrator.
+            </p>
+          </div>
+        </SignedIn>
 
         <div className='flex justify-center gap-4'>
           <Link
@@ -93,17 +101,27 @@ export default function UnauthorizedPage() {
             Return to EmojiMap
           </Link>
 
-          <SignInButton
-            mode='modal'
-            withSignUp={false}
-            appearance={{
-              baseTheme: theme === 'dark' ? dark : undefined,
-            }}
-          >
-            <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
-              Sign In
-            </button>
-          </SignInButton>
+          <SignedOut>
+            <SignInButton
+              mode='modal'
+              withSignUp={false}
+              appearance={{
+                baseTheme: theme === 'dark' ? dark : undefined,
+              }}
+            >
+              <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <SignOutButton>
+              <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
+                Sign Out
+              </button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </div>
     </div>
