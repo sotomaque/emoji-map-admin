@@ -1,6 +1,11 @@
 'use client';
 
-import { SignInButton } from '@clerk/nextjs';
+import {
+  SignInButton,
+  SignOutButton,
+  SignedIn,
+  SignedOut,
+} from '@clerk/nextjs';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
 import { dark } from '@clerk/themes';
@@ -93,17 +98,27 @@ export default function UnauthorizedPage() {
             Return to EmojiMap
           </Link>
 
-          <SignInButton
-            mode='modal'
-            withSignUp={false}
-            appearance={{
-              baseTheme: theme === 'dark' ? dark : undefined,
-            }}
-          >
-            <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
-              Sign In
-            </button>
-          </SignInButton>
+          <SignedOut>
+            <SignInButton
+              mode='modal'
+              withSignUp={false}
+              appearance={{
+                baseTheme: theme === 'dark' ? dark : undefined,
+              }}
+            >
+              <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
+
+          <SignedIn>
+            <SignOutButton>
+              <button className='px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-700 hover:from-blue-700 hover:to-purple-800 dark:from-blue-500 dark:to-purple-600 dark:hover:from-blue-600 dark:hover:to-purple-700 text-white rounded-md transition-colors shadow-[0_0_15px_rgba(79,70,229,0.3)] dark:shadow-[0_0_15px_rgba(79,70,229,0.5)]'>
+                Sign Out
+              </button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { ModeToggle } from '../mode-toggle';
+import { ModeToggle } from './mode-toggle';
 
 // Mock the useTheme hook
 vi.mock('next-themes', () => ({
@@ -60,7 +60,7 @@ describe('ModeToggle', () => {
   it('should render the toggle button', () => {
     render(<ModeToggle />);
 
-    expect(screen.getByTestId('mock-button')).toBeInTheDocument();
+    expect(screen.getByTestId('mode-toggle')).toBeInTheDocument();
     // Use getAllByTestId for elements that appear multiple times
     expect(screen.getAllByTestId('sun-icon-main').length).toBeGreaterThan(0);
     expect(screen.getAllByTestId('moon-icon-main').length).toBeGreaterThan(0);

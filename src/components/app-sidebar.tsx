@@ -28,7 +28,7 @@ import Image from 'next/image';
 import { UserButton } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import { useTheme } from 'next-themes';
-import { ModeToggle } from './header/mode-toggle';
+import { ModeToggle } from './mode-toggle/mode-toggle';
 
 const data = {
   user: {
