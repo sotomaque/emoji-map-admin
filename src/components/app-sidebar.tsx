@@ -178,7 +178,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <div className='flex items-center gap-2'>
               <div className='flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground'>
-                {/* <Command className="size-4" /> */}
                 <Image
                   src='/logo.png'
                   alt='EmojiMap'

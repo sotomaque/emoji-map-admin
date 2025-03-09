@@ -9,7 +9,7 @@ export function Header() {
         <Link href='/' aria-label='Home page' className='py-2'>
           <div className='flex items-center'>
             <Image
-              src='/logo-no-background.png'
+              src='/logo.png'
               alt='Emoji Map Logo'
               width={56}
               height={56}
