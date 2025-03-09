@@ -1,3 +1,5 @@
+import { Footer } from '@/components/footer/footer';
+import { Header } from '@/components/header/header';
 import { isAuthorizedAdmin } from '@/utils/roles';
 import { redirect } from 'next/navigation';
 
@@ -10,5 +12,11 @@ export default async function UnauthorizedLayout({
     redirect('/admin');
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      <main className='flex-1 flex flex-col'>{children}</main>
+      <Footer />
+    </>
+  );
 }

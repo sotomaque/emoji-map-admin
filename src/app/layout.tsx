@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/header/header';
 import { cn } from '@/lib/utils';
-import { Footer } from '@/components/footer/footer';
 import { Providers } from '@/components/providers/providers';
 
 const fontSans = FontSans({
@@ -31,11 +29,7 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <Providers>
-          <Header />
-          <main className='flex-1 flex flex-col'>{children}</main>
-          <Footer />
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
