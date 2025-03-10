@@ -1,24 +1,25 @@
 import { CLERK_ADMIN_ROLE } from '@/constants/clerk';
 import { env } from '@/env';
+import { auth, clerkClient } from '@clerk/nextjs/server';
 
-// Define the session claims type based on what we need
-type SessionClaims = {
-  org_id?: string;
-  org_role?: string;
+export const isAuthorizedAdmin = async () => {
+  const session = await auth();
+  const userId = session?.userId;
+
+  if (!session || !userId) {
+    return false;
+  }
+
+  const client = await clerkClient();
+
+  if (userId) {
+    const result = await client.users.getOrganizationMembershipList({ userId });
+
+    return result.data.some(({ organization, role }) => {
+      const matchesOrgId = organization.id === env.CLERK_EMOJIMAP_ORG_ID;
+      const isAdmin = role === CLERK_ADMIN_ROLE;
+
+      return matchesOrgId && isAdmin;
+    });
+  }
 };
-
-/**
- * Checks if a user is an authorized admin based on their session claims
- * @param sessionClaims The session claims from Clerk auth
- * @returns True if the user is an admin in the EmojiMap organization, false otherwise
- */
-export function isAuthorizedAdmin(
-  sessionClaims: SessionClaims | null | undefined
-): boolean {
-  if (!sessionClaims) return false;
-
-  const isInOrg = sessionClaims.org_id === env.CLERK_EMOJIMAP_ORG_ID;
-  const isAdmin = sessionClaims.org_role === CLERK_ADMIN_ROLE;
-
-  return isInOrg && isAdmin;
-}
