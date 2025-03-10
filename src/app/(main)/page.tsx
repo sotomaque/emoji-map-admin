@@ -1,4 +1,4 @@
-import { isAuthorizedAdmin } from '@/utils/roles';
+import { isAuthorizedAdmin } from '@/utils/auth';
 import { redirect } from 'next/navigation';
 
 export default async function RootPage() {

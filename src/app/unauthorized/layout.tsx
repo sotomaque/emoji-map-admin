@@ -1,6 +1,6 @@
 import { Footer } from '@/components/footer/footer';
 import { Header } from '@/components/header/header';
-import { isAuthorizedAdmin } from '@/utils/roles';
+import { isAuthorizedAdmin } from '@/utils/auth';
 import { redirect } from 'next/navigation';
 
 export default async function UnauthorizedLayout({
