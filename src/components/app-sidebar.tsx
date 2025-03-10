@@ -73,6 +73,11 @@ const data = {
           description: 'project management',
           url: '#',
         },
+        {
+          title: 'Statsig',
+          description: 'feature flags',
+          url: '#',
+        },
       ],
     },
     {

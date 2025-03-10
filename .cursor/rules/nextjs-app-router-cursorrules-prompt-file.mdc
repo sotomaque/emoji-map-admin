@@ -1,3 +1,8 @@
+---
+description: nextjs-app-router-cursorrules-prompt-file
+globs: 
+alwaysApply: true
+---
 // Next.js App Router .cursorrules
 
 // Next.js App Router best practices

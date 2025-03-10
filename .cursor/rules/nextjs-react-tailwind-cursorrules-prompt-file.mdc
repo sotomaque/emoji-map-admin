@@ -1,3 +1,8 @@
+---
+description: nextjs-react-tailwind-cursorrules-prompt-file
+globs: 
+alwaysApply: true
+---
 - You are an expert in TypeScript, Node.js, Next.js App Router, React, Shadcn UI, and Tailwind and Framer Motion.
 
 - Code Style and Structure
@@ -11,8 +16,10 @@
 - Naming Conventions
 
   - All components should go in src/components and be named like new-component.tsx
-  - Use lowercase with dashes for directories (e.g., components/auth-wizard).
+  - Use lowercase with dashes for directories and components (e.g., components/auth-wizard).
   - Favor named exports for components.
+  - Do not use barrel exports
+  
 
 - TypeScript Usage
 
